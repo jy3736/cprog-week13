@@ -35,7 +35,7 @@ def test01(c, e):
 
 def execMain(cmd, dat=""):
     dat = dat.encode('utf-8')
-    p = subprocess.Popen([cmd,],
+    p = subprocess.Popen([cmd, ],
                          shell=False,
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
@@ -49,7 +49,7 @@ def execMain(cmd, dat=""):
 
 
 def main():
-    root = "./src/hw01"
+    root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
     if sys.platform in ["win32"]:
         root = "."
     # cwd = os.path.abspath(os.getcwd())
