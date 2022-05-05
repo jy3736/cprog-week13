@@ -18,9 +18,16 @@ void dump(int dat[], int len) {
     cout<<endl;
 }
 
-void reverse(int dat[], int len) {
-    for(int i=0; i<len/2; i++) {
-        swap(dat[i],dat[len-i-1]);
+void bbsort(int dat[], int len) {
+    for(int i=0; i<len-1; i++) {
+        for(int j=i+1; j<len; j++) {
+            // cout<<setw(5)<<dat[i]<<setw(5)<<dat[j]<<endl;
+            if (dat[i]>dat[j]) {
+                int t = dat[i];
+                dat[i] = dat[j];
+                dat[j] = t;
+            }
+        }
     }
 }
 
@@ -35,7 +42,7 @@ int main()
     int i = 0;
     while(cin>>arr[i++]);
     i--;
-    reverse(arr,i);
+    bbsort(arr,i);
     dump(arr,i);
 
     return 0;

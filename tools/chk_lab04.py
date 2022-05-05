@@ -11,7 +11,7 @@ def expected():
     dat = [randint(1, 100) for _ in range(randint(5,15))]
     print(dat)
     idat = " ".join([str(_) for _ in dat])
-    dat.reverse()
+    dat.sort()
     odat = " ".join([str(_) for _ in dat])
     return idat, odat
 
