@@ -5,7 +5,7 @@ import subprocess
 import re
 from random import randint
 from copy import deepcopy
-
+from os.path import exists
 
 def expected():
     dat = [randint(1, 100) for _ in range(randint(5,15))]
@@ -52,12 +52,12 @@ def execMain(cmd, dat=""):
 
 def main():
     root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
-    if sys.platform in ["win32"]:
+    if sys.platform in ["win32"] and exists("main.cpp"):
         root = "."
     for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
-    print("測試通過!")
+    print("\n測試通過!")
     print(f"\n{ret}")
     exit(0)
 

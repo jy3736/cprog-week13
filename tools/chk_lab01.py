@@ -4,6 +4,7 @@ import os
 import subprocess
 import re
 from random import randint
+from os.path import exists
 
 
 def expected():
@@ -51,13 +52,13 @@ def execMain(cmd, dat=""):
 
 def main():
     root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
-    if sys.platform in ["win32"]:
+    if sys.platform in ["win32"] and exists("main.cpp"):
         root = "."
     # print(f'{root}/main')
     for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
-    print("測試通過!")
+    print("\n測試通過!")
     print(f"\n{ret}")
     exit(0)
 
