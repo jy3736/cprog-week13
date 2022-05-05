@@ -1,3 +1,5 @@
+GCC = g++
 
 all:
-	g++ -o main ./main.cpp
+	$(GCC) -o main ./main.cpp
+	

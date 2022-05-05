@@ -4,18 +4,19 @@ import os
 import subprocess
 import re
 from random import randint
+from copy import deepcopy
 
 
 def expected():
-    dat = [randint(1,100),randint(1,100)]
-    idat = f"{dat[0]:5}{dat[1]:5}"
-    odat = f"{dat[0]:5}{dat[1]:5}\n{idat[1]:5}{idat[0]:5}"
-    return idat, odat
+    dat = [randint(1, 100) for _ in range(randint(5,15))]
+    print(dat)
+    idat = " ".join([str(_) for _ in dat])
+    return idat, idat
 
 
 def cleanup(s):
     r = s.strip()
-    r = [line.strip() for line in r.split("\n")]
+    r = [" ".join(line.strip().split()) for line in r.split("\n")]
     return r
 
 
