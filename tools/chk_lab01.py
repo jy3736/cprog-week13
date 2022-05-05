@@ -53,6 +53,7 @@ def main():
     root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
     if sys.platform in ["win32"]:
         root = "."
+    # print(f'{root}/main')
     for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
