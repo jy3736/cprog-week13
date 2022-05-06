@@ -1,21 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// add your code here
-void drawLine(int n, char sym)
-{
-    while (n > 0)
-    {
-        cout << sym;
-        n--;
-    }
-    cout << endl;
-}
-
-void drawLine(int n)
-{
-    drawLine(n, '*');
-}
+// 詳細閱讀 README.md 並參考 main() 函數補上所需的程式
 
 // ==============================================
 // -----vv----- 不得修改『以下』的程式 -----vv-----

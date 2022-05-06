@@ -3,13 +3,7 @@
 
 using namespace std;
 
-// 參考 main() 函數補上所需的程式
-int index(int dat[], int len, int val)
-{
-    for (int i = 0; i < len; i++)
-        if (dat[i]==val) return i;
-    return -1;
-}
+// 詳細閱讀 README.md 並參考 main() 函數補上所需的程式
 
 // ==============================================
 // -----vv----- 不得修改『以下』的程式 -----vv-----

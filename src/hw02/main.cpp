@@ -3,14 +3,7 @@
 
 using namespace std;
 
-// 參考 main() 函數補上所需的程式
-void mul(float dat[], int len, float val)
-{
-    for (int i = 0; i < len; i++)
-    {
-        dat[i] *= val;
-    }
-}
+// 詳細閱讀 README.md 並參考 main() 函數補上所需的程式
 
 // ==============================================
 // -----vv----- 不得修改『以下』的程式 -----vv-----
