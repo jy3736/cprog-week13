@@ -1,7 +1,6 @@
-## 使用`『傳遞參考』`(Pass by Reference)參數傳遞設計函數。
+## 使用『傳遞參考』(Pass by Reference)參數傳遞方式設計函數。
 
 - 設計 `swap(...)` 函數對調給定的兩個參數內容。
-- 請參閱主程式的函數使用方式，設計所需的函數 `swap(...)`。
 - 參數(parameters)的傳遞方式務必使用『傳遞參考』`(Pass by Reference)`。
 
 ### 在 Windows 使用簡易測試
