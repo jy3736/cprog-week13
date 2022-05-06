@@ -1,5 +1,5 @@
 GCC = g++
-script = ../../tools/chk_lab04.py
+script = ../../tools/chk_hw04.py
 
 main:
 	$(GCC) -o main ./main.cpp
