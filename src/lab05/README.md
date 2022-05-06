@@ -32,9 +32,7 @@ Test Data : 9 40 72 30 82 60 49 85 96 6 67 55 14 87 90
 96
 ```
 
-
 ### 在 Windows 使用自動批閱測試
-
 ```shell
 lab05> make test
 g++ -o main ./main.cpp
