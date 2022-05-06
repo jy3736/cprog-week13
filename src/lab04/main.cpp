@@ -3,47 +3,35 @@
 
 using namespace std;
 
-// 參考 main() 函數補上所需的程式
-void swap(int &a, int &b)
+
+// add your code here
+void dump(int dat[], int len, int width=5, int col=10)
 {
-    int t = a;
-    a = b;
-    b = t;
-}
-
-void dump(int dat[], int len) {
-    for(int i=0; i<len; i++) {
-        cout<<setw(5)<<dat[i];
+    int i;
+    for(i=0; i<len; i++) {
+        cout<<setw(width)<<dat[i];
+        if ((i+1)%col==0) cout<<endl;
     }
-    cout<<endl;
-}
-
-void bbsort(int dat[], int len) {
-    for(int i=0; i<len-1; i++) {
-        for(int j=i+1; j<len; j++) {
-            // cout<<setw(5)<<dat[i]<<setw(5)<<dat[j]<<endl;
-            if (dat[i]>dat[j]) {
-                int t = dat[i];
-                dat[i] = dat[j];
-                dat[j] = t;
-            }
-        }
-    }
+    if (i%col!=0) cout<<endl;
 }
 
 // ==============================================
 // -----vv----- 不得修改『以下』的程式 -----vv-----
 // ==============================================
 
-
 int main()
 {
-    int arr[100];
-    int i = 0;
-    while(cin>>arr[i++]);
-    i--;
-    bbsort(arr,i);
-    dump(arr,i);
+    int dat[100];
+    int cnt = 0;
+    
+    while(cin>>dat[cnt++]);
+    cnt--;
+
+    dump(dat,cnt);
+    cout<<endl;
+    dump(dat,cnt,3);
+    cout<<endl;
+    dump(dat,cnt,10,3);
 
     return 0;
 }

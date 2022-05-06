@@ -7,19 +7,36 @@ from random import randint
 from copy import deepcopy
 from os.path import exists
 
+
+def dump(dat, wd=5, col=10):
+    s = ""
+    cnt = 0
+    for v in dat:
+        s += f"{v:{wd}}"
+        cnt += 1
+        if cnt % col == 0:
+            s += "\n"
+    return s
+
+
 def expected():
-    dat = [randint(1, 100) for _ in range(randint(5,15))]
-    print(dat)
-    idat = " ".join([str(_) for _ in dat])
-    dat.sort()
-    odat = " ".join([str(_) for _ in dat])
-    return idat, odat
+    dat = [randint(1, 100) for _ in range(randint(10, 20))]
+    print(f"Test Data : {dat}")
+    s = dump(dat)
+    s += f"\n{dump(dat,3)}"
+    s += f"\n{dump(dat,10,3)}"
+    sdat = " ".join([str(_) for _ in dat])
+    return sdat, s
 
 
 def cleanup(s):
     r = s.strip()
-    r = [" ".join(line.strip().split()) for line in r.split("\n")]
-    return r
+    r = [line.strip() for line in r.split("\n")]
+    noblk = []
+    for l in r:
+        if len(l) != 0:
+            noblk.append(l)
+    return noblk
 
 
 def failed(c, e):

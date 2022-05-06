@@ -4,6 +4,8 @@ import os
 import subprocess
 import re
 from random import randint
+from copy import deepcopy
+from os.path import exists
 
 
 def dump(dat, wd=5, col=5):
@@ -19,10 +21,17 @@ def dump(dat, wd=5, col=5):
 
 def expected():
     dat = [randint(1, 100) for _ in range(randint(10, 20))]
-    s = dump(dat)
-    s += f"\n{dump(dat,wd=10)}"
-    s += f"\n{dump(dat,10,3)}"
+    dat = set(dat)
+    dat = list(dat)
     sdat = " ".join([str(_) for _ in dat])
+    dat.sort()
+    s = f"{dat[0]}\n"
+    s += f"{dat[1]}\n"
+    s += f"{dat[len(dat)//3]}\n"
+    s += f"{dat[len(dat)//2]}\n"
+    s += f"{dat[-1]}\n"
+    print(f"Test Data : {sdat}")
+    print(f"            {dat}")   
     return sdat, s
 
 
@@ -67,14 +76,13 @@ def execMain(cmd, dat=""):
 
 
 def main():
-    root = "./src/hw03"
-    if sys.platform in ["win32"]:
+    root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
+    if sys.platform in ["win32"] and exists("main.cpp"):
         root = "."
-    # cwd = os.path.abspath(os.getcwd())
     for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
-    print("測試通過!")
+    print("\n測試通過!")
     print(f"\n{ret}")
     exit(0)
 

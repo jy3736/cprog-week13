@@ -3,30 +3,28 @@ import sys
 import os
 import subprocess
 import re
-import random
-
+from random import randint
+from copy import deepcopy
+from os.path import exists
 
 def expected():
-    n = random.randint(1, 10)
-    s = "*"*20+"\n"
-    sym = "*"
-    if n % 2 == 0:
-        sym = "#"
-    for i in range(1, n+1):
-        s += sym*i+"\n"
-    s += "*"*20+"\n"
-    return f"{n}", s
+    dat = [randint(1, 100) for _ in range(randint(5,15))]
+    print(dat)
+    idat = " ".join([str(_) for _ in dat])
+    dat.sort()
+    odat = " ".join([str(_) for _ in dat])
+    return idat, odat
 
 
 def cleanup(s):
     r = s.strip()
-    r = [line.strip() for line in r.split("\n")]
+    r = [" ".join(line.strip().split()) for line in r.split("\n")]
     return r
 
 
 def failed(c, e):
-    print(f"Your Output : {c}")
-    print(f"Expected    : {e}")
+    print(f"Your Output :\n{c}")
+    print(f"Expected    :\n{e}")
     exit(1)
 
 
@@ -55,14 +53,13 @@ def execMain(cmd, dat=""):
 
 
 def main():
-    root = "./src/hw02"
-    if sys.platform in ["win32"]:
+    root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
+    if sys.platform in ["win32"] and exists("main.cpp"):
         root = "."
-    # cwd = os.path.abspath(os.getcwd())
     for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
-    print("測試通過!")
+    print("\n測試通過!")
     print(f"\n{ret}")
     exit(0)
 

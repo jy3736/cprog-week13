@@ -4,43 +4,26 @@ import os
 import subprocess
 import re
 from random import randint
-
-
-def dump(dat, wd=5, col=5):
-    s = ""
-    cnt = 0
-    for v in dat:
-        s += f"{v:{wd}}"
-        cnt += 1
-        if cnt % col == 0:
-            s += "\n"
-    return s
+from os.path import exists
 
 
 def expected():
-    dat = [randint(1, 100) for _ in range(randint(10, 20))]
-    dat = set(dat)
-    dat = list(dat)
-    #print(f"Test data = {dat}\n")
-    sdat = " ".join([str(_) for _ in dat])
-    dat.sort()
-    #print(f"Test data = {dat}\n")   
-    s = f"{dat[0]}\n"
-    s += f"{dat[1]}\n"
-    s += f"{dat[len(dat)//3]}\n"
-    s += f"{dat[len(dat)//2]}\n"
-    s += f"{dat[-1]}\n"
-    return sdat, s
+    n = randint(1, 10)
+    s = "*"*20+"\n"
+    sym = "*"
+    if n % 2 == 0:
+        sym = "#"
+    for i in range(1, n+1):
+        s += sym*i+"\n"
+    s += "*"*20+"\n"
+    print(f"Test Data : {n}")
+    return f"{n}", s
 
 
 def cleanup(s):
     r = s.strip()
     r = [line.strip() for line in r.split("\n")]
-    noblk = []
-    for l in r:
-        if len(l) != 0:
-            noblk.append(l)
-    return noblk
+    return r
 
 
 def failed(c, e):
@@ -74,14 +57,14 @@ def execMain(cmd, dat=""):
 
 
 def main():
-    root = "./src/hw04"
-    if sys.platform in ["win32"]:
+    root = f"./src/{sys.argv[0].split('_')[-1].split('.')[0]}"
+    if sys.platform in ["win32"] and exists("main.cpp"):
         root = "."
-    # cwd = os.path.abspath(os.getcwd())
-    for i in range(20):
+    # print(f'{root}/main')
+    for i in range(10):
         dat, exp = expected()
         ret = test01(execMain(f'{root}/main', dat), exp)
-    print("測試通過!")
+    print("\n測試通過!")
     print(f"\n{ret}")
     exit(0)
 

@@ -16,3 +16,7 @@ lab03:
 	make -C ./$(dir_hw)/$@
 	python ./$(dir_check)/chk_$@.py
 
+hw01:
+	make -C ./$(dir_hw)/$@
+	python ./$(dir_check)/chk_$@.py
+
