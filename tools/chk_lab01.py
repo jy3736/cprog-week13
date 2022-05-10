@@ -10,7 +10,7 @@ from os.path import exists
 def expected():
     dat = [randint(1,100),randint(1,100)]
     idat = f"{dat[0]:5}{dat[1]:5}"
-    odat = f"{dat[0]:5}{dat[1]:5}\n{idat[1]:5}{idat[0]:5}"
+    odat = f"{dat[0]:5}{dat[1]:5}\n{dat[1]:5}{dat[0]:5}"
     print(f"Test Data : {idat}")
     return idat, odat
 
